@@ -12,8 +12,6 @@ type First4<T extends readonly any[]> = T extends [infer first, ...infer rest] ?
 
 
 
-
-
 /**
  *  + T[length]: 表示数组的长度
  *  + T[number]: 表示数组中的每一个值 union
