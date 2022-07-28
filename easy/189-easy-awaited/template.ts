@@ -1,23 +1,21 @@
-// type MyAwaited = any
 
 
-// type MyAwaited<T extends Promise<any>> = T extends Promise<infer X>
-//   ? X extends Promise<any>
-//     ?MyAwaited<X>
-//     :X
-//   : never
-
-type MyAwaited<T extends Promise<unknown>>= T extends Promise<infer X>
-  ? X extends Promise<unknown>
-    ? MyAwaited<X>
-    : X
-  :never
+// type MyAwaited<T extends Promise<unknown>>= T extends Promise<infer X>
+//   ? X extends Promise<unknown>
+//     ? MyAwaited<X>
+//     : X
+//   :never
 
 
 
+/* myAwaited 其实是一个 promise 我们要实现一个 promsie 的泛型 */
 
-/**
- *  + infer 
- *    + 只能在条件类型里面使用
- *    + 设置未知数 变量
- */
+/* 
+  1. promise 
+*/
+
+
+type MyAwaited<T extends Promise<unknown>>= 
+T extends Promise<infer X>? X extends Promise<unknown>?MyAwaited<X>:X :never
+
+
